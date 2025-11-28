@@ -1,1 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoang Duong Thao Ha | Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-sub: #718096;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --radius: 20px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
 
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* PROFILE CARD */
+        .profile-card {
+            grid-column: span 12;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            min-height: 200px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .profile-content h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-content .title {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .profile-content .description {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* DOWNLOAD CV CARD */
+        .download-card {
+            grid-column: span 3;
+            background: #ef4444;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            min-height: 200px;
+        }
+        
+        .download-card i { 
+            font-size: 3rem; 
+            margin-bottom: 15px; 
+        }
+        
+        .download-card span { 
+            font-weight: 700; 
+            font-size: 1.3rem; 
+        }
+        
+        .download-card:hover { 
+            background: #f87171; 
+        }
+
+        /* PROJECT CARDS */
+        .project-card {
+            grid-column: span 3;
+            border-left: 4px solid var(--accent);
+            justify-content: space-between;
+            min-height: 350px;
+        }
+
+        .project-content h3 { 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            color: var(--text-main);
+        }
+        
+        .project-content p { 
+            font-size: 1rem; 
+            color: var(--text-sub); 
+            line-height: 1.6; 
+            margin-bottom: 20px; 
+        }
+
+        .tech-stack {
+            margin-bottom: 20px;
+        }
+
+        .tech-stack h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            margin-bottom: 10px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .tech-tag { 
+            font-size: 0.85rem; 
+            padding: 8px 12px; 
+            border-radius: 8px; 
+            background: #f1f5f9; 
+            color: #475569; 
+            font-weight: 600; 
+        }
+
+        .project-link {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        /* SKILLS CARD */
+        .skills-card {
+            grid-column: span 6;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            min-height: 350px;
+        }
+        
+        .skills-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .skill-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* CONTACT CARD */
+        .contact-card {
+            grid-column: span 12;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 150px;
+            padding: 25px 30px;
+        }
+        
+        .contact-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+        
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .profile-card,
+            .contact-card {
+                grid-column: span 6;
+            }
+            
+            .download-card,
+            .project-card {
+                grid-column: span 3;
+            }
+            
+            .skills-card {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .card {
+                grid-column: span 1 !important;
+                min-height: auto !important;
+            }
+            
+            .profile-card { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="bento-grid">
+            
+            <!-- Profile Card -->
+            <div class="card profile-card">
+                <img src="avatar.png" alt="Hoang Duong Thao Ha" class="profile-img">
+                <div class="profile-content">
+                    <h1>Hoang Duong Thao Ha</h1>
+                    <div class="title">Data Science & Business Analytics | Seeking Data Analyst Internship</div>
+                    <p class="description">
+                        Final-year student in Data Science & Business Analytics with a foundation in data analysis, 
+                        business intelligence, and fundamental machine learning. Have experience through academic 
+                        projects related to data processing, visualization, and analytical modeling.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Download CV Card -->
+            <div class="card download-card" onclick="downloadCV()">
+                <i class="fas fa-file-pdf"></i>
+                <span>My CV</span>
+            </div>
+
+            <!-- Project Cards -->
+            <a href="https://github.com/thaoha-code/Housing-Price-Prediction" target="_blank" class="card project-card">
+                <div class="project-content">
+                    <h3>Housing Price Prediction</h3>
+                    <p>Processed 545 housing records with 13 features for real estate price prediction using Linear Regression and IQR techniques.</p>
+                    <div class="tech-stack">
+                        <h4>TECH STACK</h4>
+                        <div class="tech-tags">
+                            <div class="tech-tag">Python</div>
+                            <div class="tech-tag">Scikit-learn</div>
+                            <div class="tech-tag">Pandas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-link">View Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://github.com/thaoha-code/Spotify-Music-Data-Platform" target="_blank" class="card project-card">
+                <div class="project-content">
+                    <h3>Spotify Music Data Platform</h3>
+                    <p>Built a relational database system with 5 linked tables on SQL Server and designed Power BI dashboards.</p>
+                    <div class="tech-stack">
+                        <h4>TECH STACK</h4>
+                        <div class="tech-tags">
+                            <div class="tech-tag">SQL</div>
+                            <div class="tech-tag">Power BI</div>
+                            <div class="tech-tag">K-Means</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-link">View Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://github.com/thaoha-code/Business-Performance-Customer-Analysis" target="_blank" class="card project-card">
+                <div class="project-content">
+                    <h3>E-commerce Analytics</h3>
+                    <p>Analyzed 5,000+ e-commerce orders and built a sentiment analysis model to evaluate customer feedback.</p>
+                    <div class="tech-stack">
+                        <h4>TECH STACK</h4>
+                        <div class="tech-tags">
+                            <div class="tech-tag">Tableau</div>
+                            <div class="tech-tag">NLP</div>
+                            <div class="tech-tag">Python</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-link">View Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Skills Card -->
+            <div class="card skills-card">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming & Tools</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">Python (Pandas, Matplotlib, Seaborn)</div>
+                            <div class="skill-item">SQL Server</div>
+                            <div class="skill-item">Power BI</div>
+                            <div class="skill-item">Tableau</div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">Teamwork</div>
+                            <div class="skill-item">Communication</div>
+                            <div class="skill-item">Problem Solving</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Card -->
+            <div class="card contact-card">
+                <h2>Contact Information</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Da Nang City, Vietnam</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(+84) 825 915 736</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hoangduongthaoha@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/thaoha-code" target="_blank" class="contact-link">github.com/thaoha-code</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function downloadCV() {
+            const link = document.createElement('a');
+            link.href = 'ThaoHa_CV.pdf';
+            link.download = 'Hoang_Duong_Thao_Ha_CV.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+
+</body>
+</html>
